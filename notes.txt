@@ -1,0 +1,19 @@
+angular.json - Angular workspace configuration file.
+
+tsconfig.json - TypeScript compiler settings.
+
+tsconfig.app.json - TypeScript settings for the Angular application.
+
+package.json - Contains project dependencies and npm scripts.
+
+src/main.ts - Entry point of the Angular application.
+
+src/app/app.ts - Root component of the Angular application.
+
+src/index.html - Main HTML page loaded by the browser.
+
+src/app/app.config.ts - Application configuration including providers and routing.
+
+maximumWarning - Displays a warning when the bundle size exceeds the specified limit.
+
+maximumError - Fails the build when the bundle size exceeds the specified limit.
