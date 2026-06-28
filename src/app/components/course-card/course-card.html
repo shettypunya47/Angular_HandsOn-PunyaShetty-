@@ -7,6 +7,25 @@
 
     <p>Instructor: {{ course.instructor }}</p>
 
+    <p>
+        Status:
+        <span [ngSwitch]="course.gradeStatus">
+
+            <span *ngSwitchCase="'passed'">
+                Passed
+            </span>
+
+            <span *ngSwitchCase="'failed'">
+                Failed
+            </span>
+
+            <span *ngSwitchCase="'pending'">
+                Pending
+            </span>
+
+        </span>
+    </p>
+
     <button (click)="enroll()">Enroll</button>
 </div>
 
