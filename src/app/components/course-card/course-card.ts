@@ -9,10 +9,17 @@ import {
   CommonModule
 } from '@angular/common';
 
+import { Highlight } from '../../directives/highlight';
+import { CreditLabelPipe } from '../../pipes/credit-label-pipe';
+
 @Component({
   selector: 'app-course-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    Highlight,
+    CreditLabelPipe
+  ],
   templateUrl: './course-card.html',
   styleUrl: './course-card.css'
 })
@@ -35,10 +42,6 @@ export class CourseCard {
     this.isExpanded = !this.isExpanded;
   }
 
-  // getter keeps the template clean — the template just binds [ngClass]="cardClasses"
-  // instead of repeating the enrolled/full/expanded conditions inline in the HTML.
-  // If the rules ever change (e.g. credits threshold), there's one place to update,
-  // and the template stays readable instead of turning into a wall of conditions.
   get cardClasses() {
     return {
       'card--enrolled': this.isEnrolled,
@@ -54,8 +57,10 @@ export class CourseCard {
       failed: 'red',
       pending: 'grey'
     };
+
     return {
-      'border-left': `4px solid ${colors[this.course?.gradeStatus] ?? 'grey'}`
+      'border-left':
+        `4px solid ${colors[this.course?.gradeStatus] ?? 'grey'}`
     };
   }
 }
