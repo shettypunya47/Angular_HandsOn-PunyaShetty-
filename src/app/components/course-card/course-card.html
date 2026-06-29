@@ -1,32 +1,13 @@
-<div>
-    <h3>{{ course.name }}</h3>
+<div class="course-card" [ngClass]="cardClasses" [ngStyle]="borderStyle">
+  <h3>{{ course.name }}</h3>
+  <p>{{ course.code }}</p>
+  <button (click)="enroll()">Enroll</button>
+  <button (click)="toggleDetails()">Show Details</button>
 
-    <p>Course Code: {{ course.code }}</p>
-
-    <p>Credits: {{ course.credits }}</p>
-
+  <div *ngIf="isExpanded">
     <p>Instructor: {{ course.instructor }}</p>
-
-    <p>
-        Status:
-        <span [ngSwitch]="course.gradeStatus">
-
-            <span *ngSwitchCase="'passed'">
-                Passed
-            </span>
-
-            <span *ngSwitchCase="'failed'">
-                Failed
-            </span>
-
-            <span *ngSwitchCase="'pending'">
-                Pending
-            </span>
-
-        </span>
-    </p>
-
-    <button (click)="enroll()">Enroll</button>
+    <p>Credits: {{ course.credits }}</p>
+    <p>Status: {{ course.gradeStatus }}</p>
+  </div>
 </div>
-
 <hr>

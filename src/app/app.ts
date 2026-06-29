@@ -5,6 +5,7 @@ import { CourseList } from './pages/course-list/course-list';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [Header, Home, CourseList],
   templateUrl: './app.html',
   styleUrl: './app.css'

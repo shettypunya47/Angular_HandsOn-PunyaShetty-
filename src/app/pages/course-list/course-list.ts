@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseCard } from '../../components/course-card/course-card';
 
@@ -11,7 +11,7 @@ import { CourseCard } from '../../components/course-card/course-card';
 })
 export class CourseList implements OnInit {
 
-  isLoading = true;
+  isLoading = signal(true);
 
   selectedCourseId?: number;
 
@@ -58,19 +58,22 @@ export class CourseList implements OnInit {
     }
   ];
 
-  ngOnInit() {
+  ngOnInit(): void {
+    console.log('CourseList initialized');
+
     setTimeout(() => {
-      this.isLoading = false;
+      console.log('Setting loading false');
+      this.isLoading.set(false);
     }, 1500);
   }
 
-  onEnroll(courseId: number) {
+  onEnroll(courseId: number): void {
     console.log('Enrolling in course:', courseId);
     this.selectedCourseId = courseId;
   }
 
   // trackBy improves performance by re-rendering only changed items
-  trackByCourseId(index: number, course: any) {
+  trackByCourseId(index: number, course: any): number {
     return course.id;
   }
 }
